@@ -4,13 +4,13 @@ services:
 
   api:
     build: ./api
-    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
     volumes:
-      - ./api/:/app/
+      - ./api/:/api/
     ports:
       - 8001:8000
     environment:
-      - DATABASE_URI=postgresql://db_username:db_password@db/db_dev
+      - ./api/.env
     depends_on:
       - db
 
@@ -19,9 +19,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=db_username
-      - POSTGRES_PASSWORD=db_password
-      - POSTGRES_DB=movie_db_dev
+      - ./api/.env
 
 volumes:
   postgres_data:
