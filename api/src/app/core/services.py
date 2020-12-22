@@ -1,8 +1,9 @@
+from passlib.context import CryptContext
+from pydantic import BaseModel
 from typing import TypeVar, Type, Optional
+from tortoise import models
 
 from fastapi import HTTPException
-from pydantic import BaseModel
-from tortoise import models
 
 
 ModelType = TypeVar("ModelType", bound=models.Model)
@@ -43,3 +44,10 @@ class BaseService:
 
     async def get_obj(self, **kwargs) -> Optional[ModelType]:
         return await self.model.get_or_none(**kwargs)
+
+
+class PasswordCryptService:
+    pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+    def get_password_hash(self, password: str):
+        return self.pwd_context.hash(password)
