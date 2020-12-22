@@ -4,12 +4,12 @@ services:
 
   api:
     build: ./api
-    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 8000 --log-level debug
     volumes:
       - ./api/:/api/
     ports:
       - 8001:8000
-    environment:
+    env_file:
       - ./api/.env
     depends_on:
       - db
@@ -18,7 +18,7 @@ services:
     image: postgres:12.1-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
+    env_file:
       - ./api/.env
 
 volumes:

@@ -1,6 +1,6 @@
 import os
 
-PROJECT_NAME = "UseFul"
+PROJECT_NAME = "Fade"
 SERVER_HOST = os.environ.get("SERVER_HOST")
 
 # Secret key
@@ -22,6 +22,8 @@ DATABASE_URI = f'postgres://{os.environ.get("POSTGRES_USER")}:' \
                f'{os.environ.get("POSTGRES_PASSWORD")}@' \
                f'{os.environ.get("POSTGRES_HOST")}:5432/' \
                f'{os.environ.get("POSTGRES_DB")}'
+
+print(DATABASE_URI)
 
 USERS_OPEN_REGISTRATION = True
 
