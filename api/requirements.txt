@@ -1,3 +1,6 @@
+aiosqlite==0.16.0
+aerich==0.4.2
+asyncpg==0.21.0
 bcrypt==3.2.0
 dnspython==2.0.0
 email-validator==1.1.2

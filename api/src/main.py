@@ -23,3 +23,11 @@ app.add_middleware(
 
 app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)
 app.include_router(routers.api_router, prefix=settings.API_V1_STR)
+
+register_tortoise(
+    app,
+    db_url=settings.DATABASE_URI,
+    modules={"models": settings.APPS_MODELS},
+    generate_schemas=False,
+    add_exception_handlers=True,
+)
