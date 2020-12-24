@@ -10,7 +10,6 @@ class UserService(BaseService, PasswordCryptService):
 
     async def create_user(self, schema: schemas.UserCreateInRegistration, **kwargs):
         hash_password = self.get_password_hash(schema.dict().pop('password'))
-        print(hash_password)
         return await self.create(schemas.UserCreateInRegistration(
             **schema.dict(exclude={"password"}), password=hash_password, **kwargs
         ))

@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, conint
 from fastapi import Form
 from tortoise.contrib.pydantic import pydantic_model_creator
 
@@ -10,15 +10,15 @@ class UserBase(BaseModel):
     first_name: Optional[str] = None
 
 
-class UserBaseInDB(BaseModel):
-    """
-        Base properties
-    """
-    id: int = None
+class UserBaseInDB(UserBase):
+    id: conint(gt=0)
     username: Optional[str] = None
     email: Optional[str] = None
     is_active: Optional[bool] = True
     is_superuser: Optional[bool] = False
+
+    class Config:
+        orm_mode = True
 
 
 class UserCreate(UserBaseInDB):
@@ -48,7 +48,11 @@ class UserCreateInRegistration(UserBaseInDB):
         orm_mode = True
 
 
-class UserUpdate(UserBaseInDB):
+class UserUpdate(UserBase):
+    username: Optional[str] = None
+    email: Optional[str] = None
+    is_active: Optional[bool] = True
+    is_superuser: Optional[bool] = False
     password: Optional[str] = Form(...)
 
 

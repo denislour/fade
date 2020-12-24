@@ -23,8 +23,6 @@ DATABASE_URI = f'postgres://{os.environ.get("POSTGRES_USER")}:' \
                f'{os.environ.get("POSTGRES_HOST")}:5432/' \
                f'{os.environ.get("POSTGRES_DB")}'
 
-print(DATABASE_URI)
-
 USERS_OPEN_REGISTRATION = True
 
 EMAILS_FROM_NAME = PROJECT_NAME

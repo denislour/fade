@@ -4,6 +4,7 @@ services:
 
   api:
     build: ./api
+    container_name: api
     command: uvicorn src.main:app --reload --host 0.0.0.0 --port 8000 --log-level debug
     volumes:
       - ./api/:/api/
@@ -16,6 +17,7 @@ services:
 
   db:
     image: postgres:12.1-alpine
+    container_name: db
     ports:
       - 5432:5432
     volumes:
