@@ -2,6 +2,7 @@ from tortoise import fields, models, Tortoise
 
 
 class User(models.Model):
+
     username = fields.CharField(max_length=100, unique=True)
     email = fields.CharField(max_length=100, unique=True)
     password = fields.CharField(max_length=100)

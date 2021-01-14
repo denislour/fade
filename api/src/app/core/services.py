@@ -31,7 +31,8 @@ class BaseService:
     async def delete(self, **kwargs):
         obj = await self.model.filter(**kwargs).delete()
         if not obj:
-            raise HTTPException(status_code=404, detail='Object does not exist')
+            raise HTTPException(
+                status_code=404, detail='Object does not exist')
 
     async def all(self) -> Optional[GetSchemaType]:
         return await self.get_schema.from_queryset(self.model.all())

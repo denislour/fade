@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "fade"
+version = "0.1.0"
+description = ""
+authors = ["Lektor <denislour@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+aiosqlite = "^0.16.0"
+aerich = "^0.4.3"
+asyncpg = "^0.21.0"
+bcrypt = "^3.2.0"
+dnspython = "^2.1.0"
+email-validator = "^1.1.2"
+fastapi = "^0.63.0"
+idna = "^3.1"
+itsdangerous = "^1.1.0"
+passlib = "^1.7.4"
+tortoise-orm = "^0.16.19"
+uvicorn = "^0.13.3"
+autopep8 = "^1.5.4"
+pylint = "^2.6.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
